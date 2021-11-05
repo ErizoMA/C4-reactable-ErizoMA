@@ -1,10 +1,6 @@
 import styled from "@emotion/styled";
 
-function Input({ placeholder }) {
-  return <Container placeholder={placeholder}></Container>;
-}
-
-const Container = styled.input`
+const Input = styled.input`
   border: 1px solid var(--blue-1);
   width: 260px;
   height: 40px;

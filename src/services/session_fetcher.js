@@ -9,9 +9,9 @@ export const SessionFetcher = (function () {
         { "Content-Type": "application/json" },
         { email, password }
       ),
-    logout: () =>
+    logout: (token) =>
       apiFetch("logout", "DELETE", {
-        Authorization: `Token token=${sessionStorage.getItem("token")}`,
+        Authorization: `Token token=${token}`,
       }),
   };
 })();

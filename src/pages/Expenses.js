@@ -1,10 +1,17 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { WhiteButton } from "../components/UI/Button";
 import Card from "../components/UI/Card";
 import { ActiveTab, InactiveTab } from "../components/UI/Tab";
 import Title from "../components/UI/Title";
+import { SessionContext } from "../contexts/SessionContext";
+import { SessionFetcher } from "../services/session_fetcher";
 
 function Expenses() {
+  const context= useContext(SessionContext)
+  function logout(){
+    SessionFetcher.logout(context.token)
+  }
   return (
     <div>
       <Title title="Expensable" />
@@ -15,7 +22,7 @@ function Expenses() {
         <InactiveTab title="Incomes" />
       </Link>
       <Card category="Food" count="4" total="400.00" />
-      <WhiteButton>Log out</WhiteButton>
+      <WhiteButton onClick={logout}>Log out</WhiteButton>
     </div>
   );
 }
