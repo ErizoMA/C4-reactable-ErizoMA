@@ -1,5 +1,9 @@
 import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Global, css } from "@emotion/react";
+import Expenses from "./pages/Expenses";
+import Incomes from "./pages/Incomes";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -23,7 +27,15 @@ function App() {
           }
         `}
       />
-      <div className="App"></div>
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route path="/expenses" component={Expenses} />
+            <Route path="/incomes" component={Incomes} />
+          </Switch>
+        </Router>
+      </div>
     </>
   );
 }
