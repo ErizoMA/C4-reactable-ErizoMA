@@ -1,8 +1,7 @@
 import Input from "../components/Login/Input";
 import Label from "../components/Login/Label";
 import Subtitle from "../components/Login/Subtitle";
-import Title from "../components/Login/Title";
-import Button from "../components/UI/Button";
+import Title from "../components/UI/Title";
 
 function Login() {
   return (
@@ -13,7 +12,6 @@ function Login() {
       <Input placeholder="somebody@mail.com" />
       <Label text="Password" />
       <Input placeholder="********" />
-      <Button></Button>
     </div>
   );
 }

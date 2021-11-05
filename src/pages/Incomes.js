@@ -1,5 +1,5 @@
 function Incomes() {
-  return ( <div>Incomes</div> );
+  return <div>Incomes</div>;
 }
 
 export default Incomes;

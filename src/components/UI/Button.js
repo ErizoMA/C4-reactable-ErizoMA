@@ -1,18 +1,18 @@
 import styled from "@emotion/styled";
 
-function Button() {
-  return <BlueButton>Login</BlueButton>;
-}
-
-const BlueButton = styled.button`
+export const BlueButton = styled.button`
   background: var(--blue-1);
   border-radius: 8px;
   padding: 8px 16px;
   font-size: 18px;
   line-height: 24px;
   color: #ffffff;
-  border:none;
+  border: none;
   cursor: pointer;
 `;
 
-export default Button;
+export const WhiteButton = styled(BlueButton)`
+  color: var(--blue-1);
+  background: white;
+  border: 1px solid var(--blue-1);
+`;

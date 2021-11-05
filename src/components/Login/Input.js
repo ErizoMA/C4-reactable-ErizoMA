@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-function Input({placeholder}) {
+function Input({ placeholder }) {
   return <Container placeholder={placeholder}></Container>;
 }
 
