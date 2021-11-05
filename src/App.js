@@ -4,6 +4,7 @@ import { Global, css } from "@emotion/react";
 import Expenses from "./pages/Expenses";
 import Incomes from "./pages/Incomes";
 import Login from "./pages/Login";
+import { SessionProvider } from "./contexts/SessionContext";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
             padding: 0;
             box-sizing: border-box;
             font-family: "Roboto", sans-serif;
-            text-decoration:none;
+            text-decoration: none;
           }
           :root {
             --gray-1: #333333;
@@ -29,13 +30,15 @@ function App() {
         `}
       />
       <div className="App">
-        <Router>
-          <Switch>
-            <Route exact path="/" component={Login} />
-            <Route path="/expenses" component={Expenses} />
-            <Route path="/incomes" component={Incomes} />
-          </Switch>
-        </Router>
+        <SessionProvider>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Login} />
+              <Route path="/expenses" component={Expenses} />
+              <Route path="/incomes" component={Incomes} />
+            </Switch>
+          </Router>
+        </SessionProvider>
       </div>
     </>
   );
