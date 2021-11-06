@@ -22,8 +22,18 @@ function Incomes() {
       <Link to="/incomes">
         <ActiveTab title="Incomes" />
       </Link>
-      
-      <Card category="Salary" count="2" total="5000.00" />
+
+      {context.incomes &&
+        context.incomes.map((e) => (
+          <Card
+            key={e.id}
+            category={e.name}
+            count={e.transactions.length}
+            total={e.transactions.reduce(function (acc, obj) {
+              return acc + obj.amount;
+            }, 0)}
+          />
+        ))}
       <WhiteButton onClick={logout}>Log out</WhiteButton>
     </div>
   );

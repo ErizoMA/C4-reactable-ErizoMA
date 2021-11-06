@@ -6,7 +6,7 @@ export const CategoriesFetcher = (function () {
       apiFetch("categories", "GET", {
         Authorization: `Token token=${token}`,
       }),
-    show: (token,productId) =>
+    show: (token, productId) =>
       apiFetch(`categories/${productId}`, "GET", {
         Authorization: `Token token=${token}`,
       }),
