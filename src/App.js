@@ -5,6 +5,7 @@ import Expenses from "./pages/Expenses";
 import Incomes from "./pages/Incomes";
 import Login from "./pages/Login";
 import { SessionProvider } from "./contexts/SessionContext";
+import ProtectedRoute from "./components/Routes/ProtectedRoute";
 
 function App() {
   return (
@@ -34,8 +35,8 @@ function App() {
           <Router>
             <Switch>
               <Route exact path="/" component={Login} />
-              <Route path="/expenses" component={Expenses} />
-              <Route path="/incomes" component={Incomes} />
+              <ProtectedRoute path="/expenses" component={Expenses} />
+              <ProtectedRoute path="/incomes" component={Incomes} />
             </Switch>
           </Router>
         </SessionProvider>

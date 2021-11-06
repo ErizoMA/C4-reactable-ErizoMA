@@ -8,9 +8,11 @@ import { SessionContext } from "../contexts/SessionContext";
 import { SessionFetcher } from "../services/session_fetcher";
 
 function Expenses() {
-  const context= useContext(SessionContext)
-  function logout(){
-    SessionFetcher.logout(context.token)
+  const context = useContext(SessionContext);
+
+  function logout() {
+    SessionFetcher.logout(context.token);
+    context.setToken("")
   }
   return (
     <div>
