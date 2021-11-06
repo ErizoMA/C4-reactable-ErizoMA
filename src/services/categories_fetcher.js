@@ -6,8 +6,8 @@ export const CategoriesFetcher = (function () {
       apiFetch("categories", "GET", {
         Authorization: `Token token=${token}`,
       }),
-    show: (token, productId) =>
-      apiFetch(`categories/${productId}`, "GET", {
+    delete: (token, categoryId) =>
+      apiFetch(`categories/${categoryId}`, "DELETE", {
         Authorization: `Token token=${token}`,
       }),
   };

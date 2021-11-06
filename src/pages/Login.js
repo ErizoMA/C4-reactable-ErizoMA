@@ -24,6 +24,7 @@ function Login() {
       const data = await SessionFetcher.login(form.email, form.password);
       if (data.token) {
         const categories = await CategoriesFetcher.index(data.token);
+        sessionStorage.setItem("token", data.token);
         context.setToken(data.token);
         context.setCategories(categories);
       }

@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import { useContext } from "react";
 import { SessionContext } from "../../contexts/SessionContext";
+import { CategoriesFetcher } from "../../services/categories_fetcher";
 
 function Card({ id, category, count, total }) {
   const context = useContext(SessionContext);
@@ -9,6 +10,7 @@ function Card({ id, category, count, total }) {
   function deleteCard() {
     const newCategories = context.categories.filter((item) => item.id !== id);
     context.setCategories(newCategories);
+    CategoriesFetcher.delete(context.token, id);
   }
   return (
     <div
