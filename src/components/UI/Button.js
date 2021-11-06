@@ -15,4 +15,7 @@ export const WhiteButton = styled(BlueButton)`
   color: var(--blue-1);
   background: white;
   border: 1px solid var(--blue-1);
+  :hover {
+    background: rgba(47, 128, 237, 0.1);
+  }
 `;

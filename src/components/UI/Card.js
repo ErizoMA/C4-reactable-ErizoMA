@@ -43,6 +43,17 @@ function Card({ id, category, count, total }) {
           width: 24px;
           height: 24px;
         }
+        .circle {
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          border: 1px solid var(--blue-1);
+          display: grid;
+          place-items: center;
+          :hover {
+            background: rgba(47, 128, 237, 0.1);
+          }
+        }
       `}
     >
       <div>
@@ -50,7 +61,9 @@ function Card({ id, category, count, total }) {
         <p className="subtitle">{`${count} transactions`}</p>
       </div>
       <p className="total">{`$ ${total}`}</p>
-      <img onClick={deleteCard} alt="" src="trash.svg" />
+      <div className="circle">
+        <img onClick={deleteCard} alt="" src="trash.svg" />
+      </div>
     </div>
   );
 }

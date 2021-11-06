@@ -10,6 +10,5 @@ const P = styled.p`
   line-height: 40px;
   font-family: Inter;
   text-align: center;
-  /* margin:0 58px; */
 `;
 export default Title;
