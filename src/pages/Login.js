@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
 import Input from "../components/Login/Input";
@@ -33,9 +34,6 @@ function Login() {
         password: "",
       });
     }
-
-    // context.setToken(data.token)
-    // if(context.token){console.log(context.token)}
   }
 
   function setFormValue(e) {
@@ -45,7 +43,7 @@ function Login() {
   return (
     <>
       {!context.token ? (
-        <div>
+        <LoginContainer>
           <Title title="Welcome to Expensable" />
           <Subtitle subtitle="Please login to start using the app" />
           <form onSubmit={handleSubmit}>
@@ -67,12 +65,20 @@ function Login() {
             />
             <BlueButton>Login</BlueButton>
           </form>
-        </div>
+        </LoginContainer>
       ) : (
         <Redirect to="/expenses" />
       )}
     </>
   );
 }
+
+const LoginContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 58px;
+  text-align: center;
+`;
 
 export default Login;
