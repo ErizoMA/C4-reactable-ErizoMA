@@ -14,6 +14,7 @@ function Expenses() {
   function logout() {
     SessionFetcher.logout(context.token);
     context.setToken("");
+    sessionStorage.setItem("token","")
   }
   return (
     <ExpensableContainer>

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { CategoriesFetcher } from "../services/categories_fetcher";
 
 export const SessionContext = createContext();
 
@@ -7,8 +8,19 @@ export const SessionProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [expenses, setExpenses] = useState([]);
   const [incomes, setIncomes] = useState([]);
+  const sessionToken = sessionStorage.getItem("token");
 
   useEffect(() => {
+    if (sessionToken) {
+      setToken(sessionToken);
+      const getData = async () => {
+        const categories = await CategoriesFetcher.index(sessionToken);
+        setCategories(categories);
+      };
+
+      getData();
+    }
+
     const expense = categories.filter(
       (item) => item.transaction_type === "expense"
     );
@@ -17,7 +29,7 @@ export const SessionProvider = ({ children }) => {
       (item) => item.transaction_type === "income"
     );
     setIncomes(income);
-  }, [categories]);
+  }, [categories, sessionToken]);
 
   const value = {
     token,
