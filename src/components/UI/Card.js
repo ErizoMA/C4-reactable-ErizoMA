@@ -8,7 +8,7 @@ function Card({ id, category, count, total }) {
 
   function deleteCard() {
     const newCategories = context.categories.filter((item) => item.id !== id);
-    context.setCategories(newCategories)
+    context.setCategories(newCategories);
   }
   return (
     <div

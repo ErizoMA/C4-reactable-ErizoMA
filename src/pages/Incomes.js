@@ -1,11 +1,12 @@
 import { WhiteButton } from "../components/UI/Button";
 import { Link } from "react-router-dom";
-import Card from "../components/UI/Card";
+import { ExpensableContainer } from "../components/Expensable/ExpensableContainer";
 import { ActiveTab, InactiveTab } from "../components/UI/Tab";
 import Title from "../components/UI/Title";
 import { useContext } from "react";
 import { SessionContext } from "../contexts/SessionContext";
 import { SessionFetcher } from "../services/session_fetcher";
+import ExpesableGrid from "../components/Expensable/ExpensableGrid";
 function Incomes() {
   const context = useContext(SessionContext);
 
@@ -14,29 +15,21 @@ function Incomes() {
     context.setToken("");
   }
   return (
-    <div>
+    <ExpensableContainer>
       <Title title="Expensable" />
-      <Link to="/expenses">
-        <InactiveTab title="Expenses" />
-      </Link>
-      <Link to="/incomes">
-        <ActiveTab title="Incomes" />
-      </Link>
+      <div className="tabs">
+        <Link to="/expenses">
+          <InactiveTab title="Expenses" />
+        </Link>
+        <Link to="/incomes">
+          <ActiveTab title="Incomes" />
+        </Link>
+      </div>
 
-      {context.incomes &&
-        context.incomes.map((e) => (
-          <Card
-            key={e.id}
-            id={e.id}
-            category={e.name}
-            count={e.transactions.length}
-            total={e.transactions.reduce(function (acc, obj) {
-              return acc + obj.amount;
-            }, 0)}
-          />
-        ))}
+      <ExpesableGrid data={context.incomes} />
+
       <WhiteButton onClick={logout}>Log out</WhiteButton>
-    </div>
+    </ExpensableContainer>
   );
 }
 
