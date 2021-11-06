@@ -8,13 +8,14 @@ export const SessionProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [expenses, setExpenses] = useState([]);
   const [incomes, setIncomes] = useState([]);
-  const sessionToken = sessionStorage.getItem("token");
 
   useEffect(() => {
-    if (sessionToken) {
-      setToken(sessionToken);
+    if (sessionStorage.getItem("token")) {
+      setToken(sessionStorage.getItem("token"));
       const getData = async () => {
-        const categories = await CategoriesFetcher.index(sessionToken);
+        const categories = await CategoriesFetcher.index(
+          sessionStorage.getItem("token")
+        );
         setCategories(categories);
       };
 
@@ -29,7 +30,7 @@ export const SessionProvider = ({ children }) => {
       (item) => item.transaction_type === "income"
     );
     setIncomes(income);
-  }, [categories, sessionToken]);
+  }, [categories]);
 
   const value = {
     token,
