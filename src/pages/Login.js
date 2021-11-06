@@ -48,22 +48,27 @@ function Login() {
           <Title title="Welcome to Expensable" />
           <Subtitle subtitle="Please login to start using the app" />
           <form onSubmit={handleSubmit}>
-            <Label text="Email" />
-            <Input
-              name="email"
-              value={form.email}
-              onChange={setFormValue}
-              type="text"
-              placeholder="somebody@mail.com"
-            />
-            <Label text="Password" />
-            <Input
-              name="password"
-              value={form.password}
-              onChange={setFormValue}
-              type="password"
-              placeholder="********"
-            />
+            <div>
+              <Label text="Email" />
+              <Input
+                name="email"
+                value={form.email}
+                onChange={setFormValue}
+                type="text"
+                placeholder="somebody@mail.com"
+              />
+            </div>
+            <div>
+              <Label text="Password" />
+              <Input
+                name="password"
+                value={form.password}
+                onChange={setFormValue}
+                type="password"
+                placeholder="********"
+              />
+            </div>
+
             <BlueButton>Login</BlueButton>
           </form>
         </LoginContainer>
@@ -77,6 +82,7 @@ function Login() {
 const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 32px;
   padding: 32px 58px;
   text-align: center;
