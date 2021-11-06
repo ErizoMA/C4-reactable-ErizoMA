@@ -1,7 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useContext } from "react";
+import { SessionContext } from "../../contexts/SessionContext";
 
-function Card({ category, count, total }) {
+function Card({ id, category, count, total }) {
+  const context = useContext(SessionContext);
+
+  function deleteCard() {
+    const newCategories = context.categories.filter((item) => item.id !== id);
+    context.setCategories(newCategories)
+  }
   return (
     <div
       css={css`
@@ -40,7 +48,7 @@ function Card({ category, count, total }) {
         <p className="subtitle">{`${count} transactions`}</p>
       </div>
       <p className="total">{`$ ${total}`}</p>
-      <img alt="" src="trash.svg" />
+      <img onClick={deleteCard} alt="" src="trash.svg" />
     </div>
   );
 }

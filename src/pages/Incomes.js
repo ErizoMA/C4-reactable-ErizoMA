@@ -27,6 +27,7 @@ function Incomes() {
         context.incomes.map((e) => (
           <Card
             key={e.id}
+            id={e.id}
             category={e.name}
             count={e.transactions.length}
             total={e.transactions.reduce(function (acc, obj) {

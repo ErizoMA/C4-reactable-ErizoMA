@@ -25,8 +25,9 @@ function Expenses() {
       </Link>
       {context.expenses &&
         context.expenses.map((e) => (
-          <Card
+          <Card 
             key={e.id}
+            id={e.id}
             category={e.name}
             count={e.transactions.length}
             total={e.transactions.reduce(function (acc, obj) {
