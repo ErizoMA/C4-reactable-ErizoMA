@@ -22,6 +22,7 @@ function Incomes() {
       <Link to="/incomes">
         <ActiveTab title="Incomes" />
       </Link>
+      
       <Card category="Salary" count="2" total="5000.00" />
       <WhiteButton onClick={logout}>Log out</WhiteButton>
     </div>

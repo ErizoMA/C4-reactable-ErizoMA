@@ -6,6 +6,7 @@ import Subtitle from "../components/Login/Subtitle";
 import { BlueButton } from "../components/UI/Button";
 import Title from "../components/UI/Title";
 import { SessionContext } from "../contexts/SessionContext";
+import { CategoriesFetcher } from "../services/categories_fetcher";
 import { SessionFetcher } from "../services/session_fetcher";
 
 function Login() {
@@ -21,7 +22,9 @@ function Login() {
     try {
       const data = await SessionFetcher.login(form.email, form.password);
       if (data.token) {
+        const categories = await CategoriesFetcher.index(data.token);
         context.setToken(data.token);
+        context.setCategories(categories);
       }
     } catch (e) {
       console.log(e);
